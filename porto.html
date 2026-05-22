@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Handika Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#070b14;
+    overflow-x:hidden;
+    color:white;
+}
+
+/* BACKGROUND */
+
+.bg{
+    position:fixed;
+    inset:0;
+    z-index:-10;
+    background:
+    radial-gradient(circle at top left,#00e5ff20,transparent 30%),
+    radial-gradient(circle at bottom right,#7c3aed20,transparent 30%),
+    #070b14;
+}
+
+.blur1,
+.blur2{
+    position:absolute;
+    border-radius:50%;
+    filter:blur(120px);
+    z-index:-1;
+}
+
+.blur1{
+    width:350px;
+    height:350px;
+    background:#00e5ff30;
+    top:-120px;
+    left:-120px;
+}
+
+.blur2{
+    width:350px;
+    height:350px;
+    background:#7c3aed30;
+    bottom:-120px;
+    right:-120px;
+}
+
+/* NAVBAR */
+
+nav{
+    width:100%;
+    padding:25px 8%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:fixed;
+    top:0;
+    backdrop-filter:blur(18px);
+    background:rgba(7,11,20,0.5);
+    border-bottom:1px solid rgba(255,255,255,0.05);
+    z-index:999;
+}
+
+.logo{
+    font-size:24px;
+    font-weight:800;
+    letter-spacing:2px;
+    background:linear-gradient(90deg,#00e5ff,#7c3aed);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+nav a{
+    text-decoration:none;
+    color:#d1d5db;
+    margin-left:30px;
+    transition:0.3s;
+    font-weight:500;
+}
+
+nav a:hover{
+    color:#00e5ff;
+}
+
+/* HERO */
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:90px;
+    padding:140px 8% 80px;
+    flex-wrap:wrap;
+}
+
+.left{
+    flex:1;
+    min-width:320px;
+}
+
+.tag{
+    display:inline-block;
+    padding:12px 22px;
+    border-radius:50px;
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.08);
+    color:#00e5ff;
+    margin-bottom:25px;
+    backdrop-filter:blur(10px);
+    box-shadow:0 0 25px rgba(0,229,255,0.08);
+}
+
+h1{
+    font-size:76px;
+    line-height:1.1;
+    margin-bottom:25px;
+    font-weight:800;
+}
+
+h1 span{
+    background:linear-gradient(90deg,#00e5ff,#7c3aed);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.desc{
+    color:#b7bec9;
+    line-height:2;
+    font-size:17px;
+    margin-bottom:40px;
+    max-width:700px;
+}
+
+/* BUTTON */
+
+.buttons{
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    padding:16px 34px;
+    border-radius:18px;
+    text-decoration:none;
+    font-weight:600;
+    transition:0.4s;
+}
+
+.primary{
+    background:linear-gradient(135deg,#00e5ff,#7c3aed);
+    color:white;
+    box-shadow:0 15px 35px rgba(0,229,255,0.2);
+}
+
+.primary:hover{
+    transform:translateY(-5px);
+    box-shadow:0 20px 45px rgba(0,229,255,0.3);
+}
+
+.secondary{
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.08);
+    color:white;
+    backdrop-filter:blur(10px);
+}
+
+.secondary:hover{
+    background:white;
+    color:#070b14;
+}
+
+/* RIGHT SIDE */
+
+.right{
+    flex:1;
+    display:flex;
+    justify-content:center;
+    min-width:320px;
+}
+
+/* PROFILE */
+
+.profile-wrap{
+    position:relative;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.glow{
+    position:absolute;
+    width:420px;
+    height:420px;
+    border-radius:50%;
+    background:
+    linear-gradient(135deg,#00e5ff,#7c3aed);
+    filter:blur(90px);
+    opacity:0.35;
+    animation:float 5s ease-in-out infinite;
+}
+
+.profile-card{
+    position:relative;
+    width:350px;
+    height:350px;
+    border-radius:40px;
+    padding:10px;
+    background:
+    linear-gradient(
+    135deg,
+    #00e5ff,
+    #7c3aed,
+    #ffffff20
+    );
+    box-shadow:
+    0 20px 60px rgba(0,0,0,0.4);
+    animation:float 5s ease-in-out infinite;
+}
+
+.profile-card img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center top;
+    border-radius:32px;
+}
+
+/* SKILLS */
+
+.skills{
+    margin-top:35px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:14px;
+}
+
+.skill{
+    padding:12px 18px;
+    border-radius:14px;
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.08);
+    color:#00e5ff;
+    font-size:14px;
+    transition:0.3s;
+    backdrop-filter:blur(10px);
+}
+
+.skill:hover{
+    background:#00e5ff;
+    color:#070b14;
+    transform:translateY(-3px);
+}
+
+/* CONTACT */
+
+.contact{
+    padding:0 8% 100px;
+}
+
+.contact-title{
+    text-align:center;
+    font-size:52px;
+    margin-bottom:50px;
+}
+
+.contact-title span{
+    background:linear-gradient(90deg,#00e5ff,#7c3aed);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.contact-box{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+
+.contact-card{
+    padding:35px;
+    border-radius:28px;
+    text-decoration:none;
+    color:white;
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.08);
+    backdrop-filter:blur(15px);
+    transition:0.4s;
+    box-shadow:0 15px 35px rgba(0,0,0,0.15);
+}
+
+.contact-card:hover{
+    transform:translateY(-8px);
+    border-color:#00e5ff;
+    box-shadow:0 20px 40px rgba(0,229,255,0.12);
+}
+
+.contact-card h3{
+    color:#00e5ff;
+    margin-bottom:12px;
+    font-size:24px;
+}
+
+.contact-card p{
+    color:#c7ced8;
+    line-height:1.8;
+}
+
+/* FOOTER */
+
+footer{
+    text-align:center;
+    padding:30px;
+    color:#6b7280;
+    border-top:1px solid rgba(255,255,255,0.05);
+}
+
+/* ANIMATION */
+
+@keyframes float{
+
+    0%{
+        transform:translateY(0px);
+    }
+
+    50%{
+        transform:translateY(-15px);
+    }
+
+    100%{
+        transform:translateY(0px);
+    }
+
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+
+    h1{
+        font-size:52px;
+    }
+
+    .hero{
+        flex-direction:column-reverse;
+        text-align:center;
+    }
+
+    .buttons{
+        justify-content:center;
+    }
+
+    .skills{
+        justify-content:center;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="bg"></div>
+<div class="blur1"></div>
+<div class="blur2"></div>
+
+<!-- NAVBAR -->
+
+<nav>
+
+    <div class="logo">HANDIKA.</div>
+
+    <div>
+        <a href="#">Home</a>
+        <a href="#contact">Contact</a>
+    </div>
+
+</nav>
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <div class="left">
+
+        <div class="tag">
+            ✨ Creative Tech Enthusiast
+        </div>
+
+        <h1>
+            Hi, I'm <span>Handika</span>
+        </h1>
+
+        <p class="desc">
+            Mahasiswa Teknik Informatika sekaligus lulusan SMK Multimedia tahun 2024 yang memiliki passion di bidang teknologi, web development, desain digital, editing, dan media kreatif.
+            <br><br>
+            Terbiasa menggunakan Microsoft Excel, Word, dan PowerPoint untuk kebutuhan pengolahan data, presentasi, serta dokumentasi profesional.
+            Saya merupakan pribadi yang disiplin, cepat belajar, kreatif, dan mampu bekerja sama dalam tim untuk menciptakan karya digital yang modern dan menarik.
+        </p>
+
+        <div class="buttons">
+
+            <!-- WHATSAPP -->
+            <a href="https://wa.me/6285175361654?text=Halo%20Handika,%20saya%20tertarik%20dengan%20portfolio%20anda." target="_blank" class="btn primary">
+                WhatsApp Me
+            </a>
+
+            <!-- INSTAGRAM -->
+            <a href="https://www.instagram.com/mekid__?igsh=dTRhZm03OXhkemdz&utm_source=qr" target="_blank" class="btn secondary">
+                Instagram
+            </a>
+
+        </div>
+
+        <div class="skills">
+
+            <div class="skill">Web Design</div>
+            <div class="skill">UI/UX</div>
+            <div class="skill">Editing</div>
+            <div class="skill">Excel</div>
+            <div class="skill">Word</div>
+            <div class="skill">PowerPoint</div>
+
+        </div>
+
+    </div>
+
+    <div class="right">
+
+        <div class="profile-wrap">
+
+            <div class="glow"></div>
+
+            <div class="profile-card">
+
+                <!-- FOTO -->
+                <img src="fotoporto.jpeg" alt="Handika">
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- CONTACT -->
+
+<section class="contact" id="contact">
+
+    <h1 class="contact-title">
+        Get In <span>Touch</span>
+    </h1>
+
+    <div class="contact-box">
+
+        <!-- EMAIL -->
+        <a href="mailto:handikadc16@gmail.com?subject=Portfolio%20Handika&body=Halo%20Handika,%20saya%20tertarik%20dengan%20portfolio%20anda." class="contact-card">
+
+            <h3>Email</h3>
+            <p>
+                handikadc16@gmail.com
+            </p>
+
+        </a>
+
+        <!-- WHATSAPP -->
+        <a href="https://wa.me/6285175361654?text=Halo%20Handika,%20saya%20tertarik%20dengan%20portfolio%20anda." target="_blank" class="contact-card">
+
+            <h3>WhatsApp</h3>
+            <p>
+                085175361654
+            </p>
+
+        </a>
+
+        <!-- INSTAGRAM -->
+        <a href="https://www.instagram.com/mekid__?igsh=dTRhZm03OXhkemdz&utm_source=qr" target="_blank" class="contact-card">
+
+            <h3>Instagram</h3>
+            <p>
+                @mekid__
+            </p>
+
+        </a>
+
+    </div>
+
+</section>
+
+<footer>
+    © 2026 Handika Dwi Cahya — Portfolio Website
+</footer>
+
+</body>
+</html>
